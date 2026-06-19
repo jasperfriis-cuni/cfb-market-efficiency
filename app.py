@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import os
+# Import libraries used for creating the web app, handling data, and making visualizations
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -14,6 +15,7 @@ st.set_page_config(
 # ── Load data ─────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
+    # Load the cleaned college football dataset
     df = pd.read_csv("cfb_cleaned_data.csv")
 
     def spread_group(spread):
@@ -38,6 +40,7 @@ def load_data():
         else:
             return "Group of 5 / Ind"
 
+    # create new columns used later for analysis and graphs
     df["spread_group"] = df["spread"].apply(spread_group)
     df["conf_tier"] = df["home_conference"].apply(conference_tier)
     return df
@@ -145,6 +148,7 @@ selected_spread = st.sidebar.slider(
 )
 
 # ── Apply filters ─────────────────────────────────────────────────────────────
+# apply user selected filters to update the dataset shown in the app
 filtered = df[
     (df["season"].isin(selected_seasons)) &
     (df["home_conference"].isin(selected_conferences)) &
@@ -161,6 +165,7 @@ if filtered.empty:
 # ── KPI metrics ───────────────────────────────────────────────────────────────
 col1, col2, col3, col4 = st.columns(4)
 
+# calculate summary statistics used to evaluate betting market efficiency
 cover_rate = filtered["home_covered"].mean() * 100
 over_rate = filtered["over_hit"].mean() * 100
 avg_spread_error = filtered["spread_error"].mean()
@@ -206,6 +211,7 @@ st.divider()
 # ── Section 2: By season ──────────────────────────────────────────────────────
 st.subheader("📅 Cover Rate by Season")
 
+# calculate home cover rate for each season
 season_cover = filtered.groupby("season")["home_covered"].mean() * 100
 
 fig, ax = plt.subplots(figsize=(8, 4))
@@ -224,6 +230,7 @@ st.divider()
 # ── Section 3: By week ────────────────────────────────────────────────────────
 st.subheader("📆 Cover Rate by Week")
 
+# analyze how home cover rates change throughout the season
 week_cover = filtered.groupby("week")["home_covered"].mean() * 100
 
 fig, ax = plt.subplots(figsize=(10, 4))
@@ -243,6 +250,7 @@ st.divider()
 st.subheader("📊 Cover Rate by Spread Group")
 
 group_order = ["Big Home Favorite", "Small Home Favorite", "Even Game", "Small Home Underdog", "Big Home Underdog"]
+# compare cover rates between different spread categories
 group_cover = filtered.groupby("spread_group")["home_covered"].mean() * 100
 group_cover = group_cover.reindex(group_order).dropna()
 
