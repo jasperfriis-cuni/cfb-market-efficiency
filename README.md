@@ -138,11 +138,16 @@ Tables of the games where the market was most wrong — biggest home underdog wi
 
 ## Key Findings
 
-- Home teams cover the spread **~62% of the time** — well above the 50% expected in an efficient market
-- The average spread error is **~+12 points**, meaning the market systematically underestimates home team performance
-- **Big home favorites (spread ≤ -14) cover ~99% of the time** — large talent gaps dominate home field effects
-- The **SEC and Big Ten** show different efficiency patterns compared to smaller conferences
-- The **over/under market is more efficient** than the spread market, with hit rates closer to 50%
+The results suggest that the college football betting market has predictive power, but it is not perfectly efficient. Betting spreads generally reflected team strength and were related to actual game outcomes, but some patterns showed possible market biases.
+
+* Home teams covered the spread **~62% of the time**, which is higher than the 50% expected in a fully efficient market. This suggests that the market may underestimate home team performance.
+* The average spread error was around **+12 points**, meaning actual results were often higher than the predicted spread.
+* Spread group analysis showed that favorites and underdogs performed differently against the spread, suggesting that team strength plays an important role in prediction accuracy.
+* Weekly analysis showed that cover rates changed throughout the season, but there was no strong consistent trend limited to specific weeks.
+* Conference analysis showed differences between conferences, although these patterns should be interpreted carefully because other factors may also influence results.
+* The over/under analysis appeared closer to an efficient market, with results closer to the expected 50% benchmark.
+
+Overall, the results indicate that betting markets are informative and can predict outcomes reasonably well, but they may still contain biases and are not perfectly accurate.
 
 ---
 
